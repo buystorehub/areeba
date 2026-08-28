@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160008">
+
+<title>For Areeba ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top, #620b2d 0%, #28000f 40%, #080004 100%);
+}
+
+/* Background glow */
+
+.glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+
+    background: rgba(255, 25, 95, 0.13);
+    filter: blur(90px);
+
+    pointer-events: none;
+}
+
+.glow.one {
+    top: -200px;
+    left: -180px;
+}
+
+.glow.two {
+    bottom: -200px;
+    right: -180px;
+}
+
+/* Main card */
+
+.container {
+    width: 92%;
+    max-width: 550px;
+    min-height: 560px;
+
+    padding: 45px 25px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.055);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header */
+
+.friend-title {
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #ffd7e2;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 10px rgba(255,40,100,.7),
+        0 0 25px rgba(255,40,100,.3);
+
+    animation: fadeDown 1.5s ease;
+}
+
+/* Welcome */
+
+h1 {
+    font-size: clamp(36px, 8vw, 52px);
+
+    margin-bottom: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ff9fb7,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: fadeIn 1.5s ease;
+}
+
+.subtitle {
+    color: rgba(255,255,255,.72);
+
+    font-size: 16px;
+
+    margin-bottom: 35px;
+
+    line-height: 1.6;
+
+    animation: fadeIn 2s ease;
+}
+
+/* Love text */
+
+#loveText {
+    width: 100%;
+    min-height: 110px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(25px, 6vw, 34px);
+
+    font-weight: 700;
+
+    color: #ffb2c4;
+
+    text-shadow:
+        0 0 10px rgba(255,23,79,.8),
+        0 0 30px rgba(255,23,79,.4);
+
+    margin-bottom: 10px;
+}
+
+.love-animation {
+    animation: lovePop .6s ease;
+}
+
+/* Button */
+
+#heartBtn {
+    border: none;
+    outline: none;
+
+    padding: 16px 32px;
+
+    border-radius: 100px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff174f,
+            #d90045
+        );
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(255,23,79,.35),
+        0 0 30px rgba(255,23,79,.15);
+
+    transition: .25s ease;
+}
+
+#heartBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow:
+        0 12px 35px rgba(255,23,79,.5),
+        0 0 45px rgba(255,23,79,.25);
+}
+
+#heartBtn:active {
+    transform: scale(.94);
+}
+
+/* Counter */
+
+#counter {
+    margin-top: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 13px;
+
+    min-height: 18px;
+}
+
+/* Floating hearts */
+
+.heart {
+    position: fixed;
+
+    bottom: -40px;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation: floatUp linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255,23,79,.8)
+        );
+}
+
+/* Stars */
+
+.star {
+    position: fixed;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .5;
+
+    animation:
+        twinkle 2s infinite alternate;
+
+    z-index: 0;
+}
+
+/* Final message */
+
+.final-message {
+    font-size: clamp(20px,5vw,28px);
+
+    line-height: 1.7;
+
+    color: #ffd1dc;
+
+    text-shadow:
+        0 0 15px rgba(255,23,79,.5);
+}
+
+.big-heart {
+    display: block;
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartbeat 1.2s infinite;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes lovePop {
+
+    0% {
+        opacity: 0;
+        transform: scale(.4);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.7);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .15;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: .9;
+        transform: scale(1.5);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:500px) {
+
+    .container {
+        min-height: 540px;
+        padding: 35px 20px;
+        border-radius: 25px;
+    }
+
+    .friend-title {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    #heartBtn {
+        padding: 15px 28px;
+        font-size: 16px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+
+<div class="container">
+
+    <div class="friend-title">
+        💕 My Cute Friend, Areeba ❤️
+    </div>
+
+    <h1>
+        Welcome Areeba ❤️
+    </h1>
+
+    <p class="subtitle">
+        I have something special for you... 🥹
+    </p>
+
+    <div id="loveText"></div>
+
+    <button id="heartBtn">
+        Click My Heart 💗
+    </button>
+
+    <div id="counter"></div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   100 CUTE / FUNNY NAMES FOR AREEBA
+========================================= */
+
+const names = [
+
+    "Budhu",
+    "Pagal",
+    "Masoom",
+    "Cute",
+    "Cutie",
+    "Cutie Pie",
+    "Pagli",
+    "Budhi",
+    "Nautanki",
+    "Drama Queen",
+
+    "Guriya",
+    "Gudiya",
+    "Bachi",
+    "Choti Si Bachi",
+    "Shararti",
+    "Shaitan",
+    "Chulbuli",
+    "Natkhat",
+    "Nakhre Wali",
+    "Nakhrebaaz",
+
+    "Meri Cutie",
+    "Meri Pagli",
+    "Meri Budhu",
+    "Meri Masoom",
+    "Meri Guriya",
+    "Meri Bachi",
+    "Meri Dost",
+    "Bestie",
+    "Sweetie",
+    "Sweetu",
+
+    "Baby",
+    "Babu",
+    "Babu Shona",
+    "Chotu",
+    "Choti",
+    "Miss Cute",
+    "Miss Innocent",
+    "Miss Pagal",
+    "Miss Drama",
+    "Miss Nakhre",
+
+    "Princess",
+    "Little Princess",
+    "Queen",
+    "Mini Queen",
+    "Drama Princess",
+    "Cute Princess",
+    "Pretty Girl",
+    "Sweet Girl",
+    "Lovely Girl",
+    "Beautiful Girl",
+
+    "Angel",
+    "Little Angel",
+    "Cute Angel",
+    "My Sunshine",
+    "Sunshine",
+    "Moon",
+    "Moonlight",
+    "Little Star",
+    "Sweetheart",
+    "Honey",
+
+    "Honey Bee",
+    "Lovebug",
+    "Buttercup",
+    "Doll",
+    "Pretty Doll",
+    "Cute Doll",
+    "Gulabo",
+    "Rose",
+    "Gul",
+    "Phool",
+
+    "Noor",
+    "Mera Noor",
+    "Khubsurat",
+    "Haseen",
+    "Haseena",
+    "Meri Khushi",
+    "Meri Muskurahat",
+    "Meri Dost",
+    "Meri Favourite",
+    "Meri Favorite Pagli",
+
+    "Trouble Maker",
+    "Little Trouble",
+    "Miss Trouble",
+    "Pagal Ladki",
+    "Crazy Girl",
+    "Funny Girl",
+    "Naughty Girl",
+    "Shaitaan Bachi",
+    "Masoom Bachi",
+    "Cute Bachi",
+
+    "Areeba Jee",
+    "Areeba Madam",
+    "Madam Jee",
+    "Meri Madam",
+    "Meri Bestie",
+    "Meri Cute Dost",
+    "Meri Pagli Dost",
+    "Meri Budhu Dost",
+    "Meri Masoom Dost",
+    "Meri Favourite Dost"
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+
+const loveText =
+    document.getElementById("loveText");
+
+const button =
+    document.getElementById("heartBtn");
+
+const counter =
+    document.getElementById("counter");
+
+
+/* =========================================
+   BUTTON CLICK
+========================================= */
+
+button.addEventListener("click", () => {
+
+    if (current < names.length) {
+
+        /* Restart animation */
+
+        loveText.classList.remove(
+            "love-animation"
+        );
+
+        void loveText.offsetWidth;
+
+        loveText.classList.add(
+            "love-animation"
+        );
+
+
+        /* Show next name */
+
+        loveText.innerHTML =
+            `I love u ${names[current]} ❤️`;
+
+
+        /* Counter */
+
+        counter.innerText =
+            `${current + 1} / ${names.length}`;
+
+
+        current++;
+
+
+        /* Floating hearts */
+
+        createHearts(7);
+
+
+        /* Last name */
+
+        if (current === names.length) {
+
+            button.innerHTML =
+                "One Last Time ❤️";
+
+        }
+
+    }
+
+    else {
+
+        /* FINAL MESSAGE */
+
+        loveText.innerHTML = `
+
+            <div class="final-message">
+
+                <span class="big-heart">
+                    ❤️
+                </span>
+
+                Areeba... 🥹
+
+                <br><br>
+
+                You're honestly one of
+                the cutest, craziest,
+                most masoom people I know. 😂❤️
+
+                <br><br>
+
+                My cute friend,
+                my favourite pagal,
+                my favourite budhu...
+
+                <br><br>
+
+                <b>
+                    Stay exactly the way you are. ❤️
+                </b>
+
+                <br><br>
+
+                I Love You, Areeba. ❤️
+
+            </div>
+
+        `;
+
+        counter.innerText =
+            "∞ ❤️ ∞";
+
+        button.style.display =
+            "none";
+
+        createHearts(50);
+    }
+
+});
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+function createHearts(amount = 5) {
+
+    for (let i = 0; i < amount; i++) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "heart";
+
+        heart.innerHTML =
+            Math.random() > .25
+                ? "❤️"
+                : "💕";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        heart.style.animationDelay =
+            Math.random() * .7 + "s";
+
+        document.body.appendChild(
+            heart
+        );
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+
+    }
+
+}
+
+
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+function createStars() {
+
+    for (let i = 0; i < 70; i++) {
+
+        const star =
+            document.createElement("div");
+
+        star.className =
+            "star";
+
+        star.style.left =
+            Math.random() * 100 + "vw";
+
+        star.style.top =
+            Math.random() * 100 + "vh";
+
+        star.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+createStars();
+
+setTimeout(() => {
+
+    createHearts(8);
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
