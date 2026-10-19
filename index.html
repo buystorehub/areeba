@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta name="description"
+        content="Numan Khalid — professional video editing for YouTube, reels, and promotional content.">
+
+  <title>Numan Khalid | Video Editor</title>
+
+  <style>
+    :root {
+      --background: #f6f8fc;
+      --white: #ffffff;
+      --text: #17283f;
+      --muted: #627087;
+      --blue: #315ee8;
+      --border: #e0e6ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #91acff;
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1160px, 90%);
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+    }
+
+    nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 21px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: white;
+    }
+
+    .button:hover {
+      filter: brightness(0.95);
+    }
+
+    .hero {
+      padding: 85px 0 65px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 5px;
+      background: #e9efff;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 25px 0;
+      font-size: clamp(48px, 7.5vw, 96px);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 12px 0;
+      font-size: clamp(34px, 4.5vw, 54px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+    }
+
+    .description {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .credit {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 25px 0;
+    }
+
+    .filters button {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: white;
+      color: var(--muted);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .filters button[aria-pressed="true"] {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      gap: 24px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    .video-card[hidden] {
+      display: none;
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111827;
+      object-fit: contain;
+    }
+
+    .video-card.portrait video {
+      aspect-ratio: 9 / 14;
+    }
+
+    .video-details {
+      padding: 15px 18px;
+    }
+
+    .video-details small {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .video-details h3 {
+      margin: 5px 0 0;
+      font-size: 17px;
+    }
+
+    .video-error {
+      margin: 0;
+      padding: 0 18px 18px;
+      color: #a24029;
+      font-size: 12px;
+    }
+
+    .services {
+      border-top: 1px solid var(--border);
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: 45px 1fr 1.2fr;
+      align-items: start;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service > span {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .service h3 {
+      margin: 0;
+      font-size: 23px;
+    }
+
+    .service p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      padding: 45px;
+      border-radius: 14px;
+      background: #172943;
+      color: white;
+    }
+
+    .contact .eyebrow,
+    .contact p {
+      color: #bacce7;
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 15px;
+      border-bottom: 1px solid #7e94b3;
+      overflow-wrap: anywhere;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd6e6;
+      border-radius: 6px;
+      background: white;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    form .button {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .form-note {
+      font-size: 11px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding-block: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact {
+        gap: 30px;
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        min-height: 68px;
+        gap: 10px;
+      }
+
+      .logo {
+        font-size: 13px;
+      }
+
+      .navigation {
+        gap: 12px;
+        font-size: 12px;
+      }
+
+      .navigation .services-link {
+        display: none;
+      }
+
+      .navigation .button {
+        padding: 9px 12px;
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 45px 0;
+      }
+
+      h1 {
+        font-size: clamp(43px, 10vw, 60px);
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .topics {
+        font-size: 9px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-card.portrait video {
+        max-height: 570px;
+      }
+
+      .filters button {
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+
+      .service {
+        grid-template-columns: 25px 1fr;
+        gap: 12px;
+      }
+
+      .service p {
+        grid-column: 2;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+        padding: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#">NUMAN KHALID</a>
+
+      <div class="navigation">
+        <a href="#videos">Videos</a>
+        <a class="services-link" href="#services">Services</a>
+        <a class="button primary" href="#contact">Let's talk</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <span class="tag">Video editor for creators & brands</span>
+
+      <h1>Your vision.<br><span>Beautifully edited.</span></h1>
+
+      <p>
+        <strong>I'm Numan Khalid, a professional video editor.</strong>
+        I create engaging YouTube videos, reels, and promotional content.
+        Whether you need one video, a few edits, or an ongoing creative
+        partner, I'm here to help.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="#videos">Explore videos ↓</a>
+        <a class="button" href="#contact">Discuss your project ↗</a>
+      </div>
+    </div>
+
+    <div class="topics">
+      <span>YOUTUBE VIDEOS</span>
+      <span>SHORTS & REELS</span>
+      <span>MOTION & CAPTIONS</span>
+      <span>PROMOTIONAL CONTENT</span>
+    </div>
+
+    <section id="videos">
+      <span class="eyebrow">Video explorer</span>
+      <h2>A style for every story.</h2>
+
+      <p class="description">
+        Explore different editing styles, from talking heads and captions
+        to motion graphics and cinematic promotional videos.
+      </p>
+
+      <p class="credit">
+        Reference examples by AP Styles; not presented as Numan's editing work.
+      </p>
+
+      <div id="filters" class="filters" aria-label="Filter videos"></div>
+
+      <div id="video-grid" class="video-grid"></div>
+
+      <noscript>Please enable JavaScript to load the video gallery.</noscript>
+    </section>
+
+    <section id="services" class="services">
+      <span class="eyebrow">Services</span>
+      <h2>You create. I bring it together.</h2>
+
+      <div class="service">
+        <span>01</span>
+        <h3>YouTube editing</h3>
+        <p>
+          Clear structure, considered pacing, clean audio, and supporting
+          visuals that keep your story moving.
+        </p>
+      </div>
+
+      <div class="service">
+        <span>02</span>
+        <h3>Shorts & reels</h3>
+        <p>
+          Focused cuts, readable captions, and an opening that gives
+          viewers a reason to stay.
+        </p>
+      </div>
+
+      <div class="service">
+        <span>03</span>
+        <h3>Flexible projects</h3>
+        <p>
+          One video, a small batch, or regular uploads — choose the
+          collaboration that fits your project.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Let's work together</span>
+          <h2>Your next video starts here.</h2>
+
+          <p>
+            From a single video to regular content, tell me what you're
+            working on.
+          </p>
+
+          <a class="email" href="mailto:chnuman1010@gmail.com">
+            chnuman1010@gmail.com
+          </a>
+        </div>
+
+        <form id="contact-form">
+          <label for="name">Your name</label>
+          <input id="name" autocomplete="name" required
+                 placeholder="What should I call you?">
+
+          <label for="project-type">Project type</label>
+          <select id="project-type">
+            <option>YouTube video</option>
+            <option>Shorts & reels</option>
+            <option>Promotional video</option>
+            <option>One or two videos</option>
+            <option>Ongoing collaboration</option>
+          </select>
+
+          <label for="message">Project details</label>
+          <textarea id="message" required
+                    placeholder="Your channel, video length, editing style, and timeline…"></textarea>
+
+          <button class="button primary" type="submit">
+            Email your project brief ↗
+          </button>
+
+          <p class="form-note">
+            Opens your email app. Review your message and send it there.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <span>© <span id="year"></span> Numan Khalid</span>
+    <a href="#">Back to top ↑</a>
+  </footer>
+
+  <script>
+    const EMAIL = "chnuman1010@gmail.com";
+
+    const VIDEO_BASE =
+      "https://apstylesedits.my.canva.site/_assets/video/";
+
+    const videoItems = [
+      {
+        category: "Introduction",
+        file: "b2180e508f8ff8e2667ae066d5e21c61.mp4",
+        portrait: false
+      },
+      {
+        category: "Faceless videos",
+        file: "dabc58b96b21db39a68dc7a591e3db72.mp4",
+        portrait: false
+      },
+      {
+        category: "Faceless videos",
+        file: "af65c38190ff2ce1706d2bee8f202b7d.mp4",
+        portrait: false
+      },
+      {
+        category: "Talking heads",
+        file: "835e427f1f37fe490a99f9993b6d7f9e.mp4",
+        portrait: true
+      },
+      {
+        category: "Talking heads",
+        file: "24d9eb4726afb3738ad5c57aea6c0104.mp4",
+        portrait: true
+      },
+      {
+        category: "Talking heads",
+        file: "cfe6741f88f8c73c892d48311a4fcc1c.mp4",
+        portrait: true
+      },
+      {
+        category: "Motion reels",
+        file: "ea8a6e2059ee713d776bc7ad114ac6c1.mp4",
+        portrait: true
+      },
+      {
+        category: "Motion reels",
+        file: "be599f25e815a00d22d84fbec655f9f3.mp4",
+        portrait: true
+      },
+      {
+        category: "Motion reels",
+        file: "08e426a0795e1e0ec7022387dbbf976b.mp4",
+        portrait: true
+      },
+      {
+        category: "Captions",
+        file: "9e8e01eca2d13b76133543097c998e52.mp4",
+        portrait: true
+      },
+      {
+        category: "Captions",
+        file: "18aa70d3e76c4b9b818a9b01db9c0fcc.mp4",
+        portrait: true
+      },
+      {
+        category: "Captions",
+        file: "99b1a47299d1232fc121a50eb164f487.mp4",
+        portrait: true
+      },
+      {
+        category: "Restaurant ads",
+        file: "cc052c61ad2209b04c4f7fbce478c150.mp4",
+        portrait: true
+      },
+      {
+        category: "Restaurant ads",
+        file: "ec854e8af2216c26112d83357a93aa86.mp4",
+        portrait: false
+      },
+      {
+        category: "Beat sync",
+        file: "aa6f5b37a85b3077773b518ac948dd68.mp4",
+        portrait: false
+      }
+    ];
+
+    const grid = document.getElementById("video-grid");
+    const filters = document.getElementById("filters");
+    const players = [];
+
+    function attemptPlay(video) {
+      const card = video.closest(".video-card");
+
+      if (document.hidden || card.hidden) return;
+
+      const result = video.play();
+
+      if (result && typeof result.catch === "function") {
+        result.catch(() => {
+          // Native controls remain available when autoplay is blocked.
+        });
+      }
+    }
+
+    const categoryCounts = {};
+
+    videoItems.forEach(item => {
+      categoryCounts[item.category] =
+        (categoryCounts[item.category] || 0) + 1;
+
+      const number = categoryCounts[item.category];
+
+      const card = document.createElement("article");
+      card.className =
+        "video-card" + (item.portrait ? " portrait" : "");
+      card.dataset.category = item.category;
+
+      const video = document.createElement("video");
+
+      video.controls = true;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.preload = "auto";
+
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.setAttribute(
+        "aria-label",
+        item.category + " reference " + number
+      );
+
+      const source = document.createElement("source");
+      source.src = VIDEO_BASE + item.file;
+      source.type = "video/mp4";
+
+      video.appendChild(source);
+
+      const details = document.createElement("div");
+      details.className = "video-details";
+
+      const credit = document.createElement("small");
+      credit.textContent = "AP STYLES · REFERENCE";
+
+      const title = document.createElement("h3");
+      title.textContent = item.category + " / " + number;
+
+      details.append(credit, title);
+
+      const error = document.createElement("p");
+      error.className = "video-error";
+      error.hidden = true;
+      error.textContent =
+        "The remote video could not load. The downloadable embedded-video HTML avoids this hosting dependency.";
+
+      function showError() {
+        error.hidden = false;
+      }
+
+      video.addEventListener("error", showError);
+      source.addEventListener("error", showError);
+
+      video.addEventListener(
+        "canplay",
+        () => attemptPlay(video),
+        { once: true }
+      );
+
+      card.append(video, details, error);
+      grid.appendChild(card);
+      players.push(video);
+
+      attemptPlay(video);
+    });
+
+    const categories = [
+      "All videos",
+      ...new Set(videoItems.map(item => item.category))
+    ];
+
+    categories.forEach((category, index) => {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.textContent = category;
+      button.setAttribute("aria-pressed", String(index === 0));
+
+      button.addEventListener("click", () => {
+        filters.querySelectorAll("button").forEach(other => {
+          other.setAttribute(
+            "aria-pressed",
+            String(other === button)
+          );
+        });
+
+        grid.querySelectorAll(".video-card").forEach(card => {
+          const shouldShow =
+            category === "All videos" ||
+            card.dataset.category === category;
+
+          card.hidden = !shouldShow;
+
+          const video = card.querySelector("video");
+
+          if (shouldShow) {
+            attemptPlay(video);
+          } else {
+            video.pause();
+          }
+        });
+      });
+
+      filters.appendChild(button);
+    });
+
+    // Retry after the first interaction if the browser blocks autoplay.
+    document.addEventListener(
+      "pointerdown",
+      () => players.forEach(attemptPlay),
+      { once: true }
+    );
+
+    document.addEventListener("visibilitychange", () => {
+      players.forEach(video => {
+        if (document.hidden) {
+          video.pause();
+        } else {
+          attemptPlay(video);
+        }
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const type = document.getElementById("project-type").value;
+        const message =
+          document.getElementById("message").value.trim();
+
+        const subject = "Video editing enquiry — " + type;
+
+        const body =
+          "Hi Numan,\n\n" +
+          "I'm " + name + ".\n" +
+          "I'm interested in: " + type + ".\n\n" +
+          message;
+
+        window.location.href =
+          "mailto:" + EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+      });
+  </script>
+</body>
+</html>
